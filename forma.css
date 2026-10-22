@@ -1,0 +1,213 @@
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+}
+
+img,
+canvas,
+svg,
+video {
+  max-width: 100%;
+}
+
+.page,
+.card,
+.filter-panel,
+.section-comparador {
+  min-width: 0;
+}
+
+.table-scroll,
+.x-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 1024px) {
+  .kpi-grid,
+  .kpi-grid-6,
+  .gauge4-grid,
+  .time-kpi-row,
+  .geo-kpi-row,
+  .rz-kpis,
+  .cm-kpis,
+  .wk-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .charts-row,
+  .bottom-row,
+  .geo-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .page {
+    padding: 12px 12px 76px;
+  }
+
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .header-left {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .header-title {
+    font-size: 16px;
+  }
+
+  .header-meta {
+    width: 100%;
+  }
+
+  .kpi-grid,
+  .kpi-grid-6,
+  .gauge4-grid,
+  .time-kpi-row,
+  .geo-kpi-row,
+  .rz-kpis,
+  .cm-kpis,
+  .wk-grid,
+  .st-strip,
+  .x-kpis,
+  .rank-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .charts-row,
+  .bottom-row,
+  .geo-grid,
+  .filter-cols,
+  .funnel-grid,
+  .x-grid2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cf-row {
+    grid-template-columns: minmax(90px, 130px) minmax(0, 1fr) minmax(70px, 110px);
+  }
+
+  .filter-field,
+  .filter-field select,
+  .gf-bar select {
+    max-width: 100%;
+  }
+
+  .filter-field select {
+    min-width: 0;
+  }
+
+  .view-toggle {
+    right: 8px;
+    bottom: 8px;
+  }
+
+  .view-toggle button {
+    padding: 9px 11px;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .card-title {
+    margin: -1rem -1rem 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .header-left {
+    gap: 8px;
+  }
+
+  .brand-pill {
+    font-size: 10px;
+  }
+
+  .header-title {
+    font-size: 14px;
+  }
+
+  .header-meta {
+    font-size: 11px;
+  }
+
+  .kpi,
+  .kpi-extra-card,
+  .x-kpi,
+  .cm-kpi,
+  .wk-card,
+  .gauge4 {
+    padding: 10px;
+  }
+
+  .kpi-value,
+  .kpi-value-lg,
+  .time-kpi-val,
+  .gauge4-val,
+  .x-kpi-val {
+    font-size: 20px;
+  }
+
+  .kpi-grid,
+  .kpi-grid-6,
+  .gauge4-grid,
+  .time-kpi-row,
+  .geo-kpi-row,
+  .rz-kpis,
+  .cm-kpis,
+  .wk-grid,
+  .st-strip,
+  .x-kpis,
+  .rank-grid {
+    gap: 8px;
+  }
+
+  .section-comparador {
+    padding: 14px 12px;
+  }
+
+  .filter-bar,
+  .gf-bar {
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .filter-count,
+  .gf-count {
+    margin-left: 0;
+  }
+
+  .zona-header,
+  .zona-row-bar {
+    grid-template-columns: 72px minmax(0, 1fr) 32px;
+    gap: 6px;
+  }
+
+  .dropoff-label {
+    min-width: 76px;
+    white-space: normal;
+  }
+
+  .view-toggle button {
+    font-size: 10px;
+    padding: 8px 9px;
+  }
+}
