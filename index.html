@@ -557,7 +557,6 @@ td.lc-nd { text-align:right; }
       <button class="app-nav-link" type="button" data-page="desatendidos" title="Leads desatendidos" onclick="setDashboardPage('desatendidos')"><span class="app-nav-icon" aria-hidden="true">◷</span><span class="app-nav-label">Leads desatendidos</span></button>
       <button class="app-nav-link" type="button" data-page="contactabilidad" title="Contactabilidad" onclick="setDashboardPage('contactabilidad')"><span class="app-nav-icon" aria-hidden="true">◎</span><span class="app-nav-label">Contactabilidad</span></button>
       <button class="app-nav-link" type="button" data-page="semanal" title="Ventas semanales — seguimiento comercial" onclick="setDashboardPage('semanal')"><span class="app-nav-icon" aria-hidden="true">▤</span><span class="app-nav-label">Ventas semanales</span></button>
-      <button class="app-nav-link" type="button" data-page="darwin" title="Darwin en vivo — pipelines y PC" onclick="setDashboardPage('darwin')"><span class="app-nav-icon" aria-hidden="true">◉</span><span class="app-nav-label">Darwin en vivo</span></button>
       <button class="app-nav-link" type="button" data-page="funnel" title="Funnel ejecutivo" onclick="setDashboardPage('funnel')"><span class="app-nav-icon" aria-hidden="true">⌁</span><span class="app-nav-label">Funnel ejecutivo</span></button>
     </nav>
     <div class="gf-bar" id="gfBar">
@@ -981,51 +980,6 @@ td.lc-nd { text-align:right; }
   </details>
   </section>
 
-
-  <section class="dashboard-view" id="pageDarwin" data-page-view="darwin" hidden>
-  <style>
-    #pageDarwin .dz-note{font-size:12px;color:#5F5E5A;margin:0 0 1rem;}
-    #pageDarwin .dz-note b{color:#1a1a19}
-    #pageDarwin .dz-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:1.5rem;}
-    #pageDarwin .dz-grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.5rem;}
-    @media (max-width:900px){#pageDarwin .dz-grid2{grid-template-columns:1fr}}
-    #pageDarwin .dz-tw{overflow-x:auto}
-    #pageDarwin table.dz{border-collapse:collapse;width:100%;font-size:12px;font-variant-numeric:tabular-nums}
-    #pageDarwin table.dz th,#pageDarwin table.dz td{padding:6px 8px;border-bottom:0.5px solid #E5E3DA;text-align:right;white-space:nowrap}
-    #pageDarwin table.dz th{font-size:10.5px;color:#888780;font-weight:700;text-transform:uppercase;letter-spacing:.03em;background:#FAFAF7;position:sticky;top:0}
-    #pageDarwin table.dz th:first-child,#pageDarwin table.dz td:first-child{text-align:left}
-    #pageDarwin table.dz tr.pc td:first-child{padding-left:22px;color:#5F5E5A}
-    #pageDarwin table.dz td.hi{font-weight:800}
-    #pageDarwin table.dz td.z{color:#B4B2A9}
-    #pageDarwin table.dz tr.tot td{font-weight:800;background:#FFF2EB}
-    #pageDarwin .dz-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
-    #pageDarwin .dz-bar select{padding:6px 8px;border:1px solid #D3D1C7;border-radius:6px;font-size:12px;background:#fff}
-    #pageDarwin .dz-err{padding:1rem;border:1px dashed #E85B1D;border-radius:10px;color:#C83A3A;font-size:13px}
-  </style>
-  <p class="dz-note" id="dzCorte">Cargando datos de Darwin…</p>
-  <div id="dzErr" hidden class="dz-err"></div>
-  <div class="dz-kpis">
-    <div class="kpi"><div class="kpi-label">Leads nuevos del mes</div><div class="kpi-value" id="dzKN">—</div><div class="kpi-sub">1ra conversación en el mes</div></div>
-    <div class="kpi"><div class="kpi-label">Recontactados</div><div class="kpi-value" id="dzKR">—</div><div class="kpi-sub">Ya existían y volvieron este mes</div></div>
-    <div class="kpi"><div class="kpi-label">Total leads activos</div><div class="kpi-value" id="dzKT">—</div><div class="kpi-sub">Nuevos + recontactados</div></div>
-    <div class="kpi"><div class="kpi-label">Calificados o más</div><div class="kpi-value" id="dzKC">—</div><div class="kpi-sub" id="dzKCp">Etapas 5 a 9</div></div>
-    <div class="kpi"><div class="kpi-label">En Escalated</div><div class="kpi-value" id="dzKE">—</div><div class="kpi-sub" id="dzKEp">Sin respuesta / derivados al equipo</div></div>
-  </div>
-  <div class="dz-grid2">
-    <div class="card"><div class="card-title">Leads nuevos por día</div><div style="position:relative;height:240px"><canvas id="dzDiaChart"></canvas></div></div>
-    <div class="card"><div class="card-title">¿En qué etapa están hoy? (todos los pipelines)</div><div style="position:relative;height:240px"><canvas id="dzEtapaChart"></canvas></div></div>
-  </div>
-  <p class="section-label">Zonas: Cajamarca, Chimbote, Huaraz, Arequipa 2, Juliaca y Moquegua</p>
-  <div class="card" style="margin-bottom:1.5rem;"><div class="dz-tw"><table class="dz" id="dzFoco"></table></div></div>
-  <p class="section-label">Todos los pipelines y sus PC</p>
-  <div class="card" style="margin-bottom:1.5rem;">
-    <div class="dz-bar"><label for="dzOrden" style="font-size:12px;color:#5F5E5A">Ordenar</label>
-      <select id="dzOrden" onchange="dzRenderTabla()"><option value="zona">Por zona (principal + PC)</option><option value="nuevos">Más leads nuevos</option><option value="recon">Más recontactados</option><option value="total">Más total</option><option value="pct">Mayor % calificados</option></select>
-    </div>
-    <div class="dz-tw"><table class="dz" id="dzTabla"></table></div>
-  </div>
-  <p class="note-partial">Fuente: DARWIN (conteos por pipeline y etapa, actualización automática). <b>Lead nuevo</b>: su primera conversación en Darwin empezó en el mes. <b>Recontactado</b>: ya existía antes del mes y abrió una conversación nueva en el mes. Cada lead se cuenta una vez, en el pipeline y etapa donde está hoy (si pasó del principal al PC, figura en el PC). <b>Escalated</b>: etapa a la que Darwin envía al lead que no responde a los seguimientos o pide un humano. Estos conteos son por contacto de Darwin y pueden diferir de las otras páginas, que usan el Metabase (1 persona = 1 lead) y excluyen algunos pipelines.</p>
-  </section>
 </main>
 </div>
 
@@ -4740,8 +4694,7 @@ const DASHBOARD_PAGES = {
   desatendidos:{id:'pageDesatendidos',title:'Leads desatendidos'},
   contactabilidad:{id:'pageContactabilidad',title:'Contactabilidad'},
   funnel:{id:'pageFunnel',title:'Funnel ejecutivo'},
-  semanal:{id:'pageSemanal',title:'Ventas semanales — Seguimiento comercial'},
-  darwin:{id:'pageDarwin',title:'Darwin en vivo — Pipelines y PC'}
+  semanal:{id:'pageSemanal',title:'Ventas semanales — Seguimiento comercial'}
 };
 function setDashboardPage(pageKey){
   const page=DASHBOARD_PAGES[pageKey];
@@ -5718,59 +5671,6 @@ function vsRenderModo(m){
   const _gfR = gfRefresh; gfRefresh = function(){ _gfR(); renderVentasSemanales(); };
   const _mes = onMesSelectChange; onMesSelectChange = function(){ _mes(); renderVentasSemanales(); };
   renderVentasSemanales();
-})();
-</script>
-
-<script>
-(function(){
-  const FOCO=['Cajamarca','Cajamarca PC','Chimbote','Chimbote PC','Huaraz','Huaraz PC','Arequipa 2','Arequipa 2 PC','Juliaca','Jualiaca PC','Moquegua','Moquegua PC'];
-  const BK=['e1','e2','e3','e4','e5','e6','e7','e8','e9','esc'];
-  const BKL={e1:'1 Saludo',e2:'2 Intención',e3:'3 Ticket',e4:'4 Present.',e5:'5 Calif.',e6:'6 Seguim.',e7:'7 Visita',e8:'8 Cita',e9:'9 Venta',esc:'Escalated'};
-  const f=n=>Number(n||0).toLocaleString('es-PE');
-  const pc=(a,b)=>b?(a/b*100).toFixed(1)+'%':'—';
-  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-  const zona=p=>p.replace(/ PC$/,'').replace('Jualiaca','Juliaca').replace(/^ICA$/,'Ica');
-  let D=null, charts=[];
-  function head(){ return '<thead><tr><th>Pipeline</th><th>Nuevos</th><th>Recontact.</th><th>Total</th>'+BK.map(b=>'<th>'+BKL[b]+'</th>').join('')+'<th>% Calif.+</th></tr></thead>'; }
-  function row(r,cls){ const z=v=>v?'<td>'+f(v)+'</td>':'<td class="z">·</td>';
-    return '<tr class="'+(cls||'')+(/ PC$/.test(r.pipeline)?' pc':'')+'"><td>'+esc(r.pipeline)+'</td>'+z(r.nuevos)+z(r.recon)+'<td class="hi">'+f(r.total)+'</td>'+BK.map(b=>z(r[b])).join('')+'<td>'+pc(r.calificados,r.total)+'</td></tr>'; }
-  const vacio=p=>({pipeline:p,nuevos:0,recon:0,total:0,calificados:0,...Object.fromEntries(BK.map(b=>[b,0]))});
-  function sum(rows,name){ const t=vacio(name); rows.forEach(r=>{['nuevos','recon','total','calificados',...BK].forEach(k=>t[k]+=r[k]||0);}); return t; }
-  window.dzRenderTabla=function(){
-    if(!D) return; const o=document.getElementById('dzOrden').value; let rows=D.pipelines.slice();
-    if(o==='zona'){ const zt={}; rows.forEach(r=>{zt[zona(r.pipeline)]=(zt[zona(r.pipeline)]||0)+r.total;});
-      rows.sort((a,b)=>(zt[zona(b.pipeline)]-zt[zona(a.pipeline)])||zona(a.pipeline).localeCompare(zona(b.pipeline))||(/ PC$/.test(a.pipeline)-/ PC$/.test(b.pipeline))); }
-    else if(o==='pct') rows.sort((a,b)=>(b.total?b.calificados/b.total:0)-(a.total?a.calificados/a.total:0));
-    else rows.sort((a,b)=>b[o]-a[o]);
-    document.getElementById('dzTabla').innerHTML=head()+'<tbody>'+rows.map(r=>row(r)).join('')+row(sum(rows,'Total'),'tot')+'</tbody>';
-  };
-  function render(){
-    const k=D.kpis;
-    document.getElementById('dzCorte').innerHTML='<b>'+esc(D.periodo)+'</b> · datos de Darwin al <b>'+esc(D.corte)+'</b> (hora Lima) · se actualiza automáticamente';
-    document.getElementById('dzKN').textContent=f(k.nuevos); document.getElementById('dzKR').textContent=f(k.recon);
-    document.getElementById('dzKT').textContent=f(k.total); document.getElementById('dzKC').textContent=f(k.calificados);
-    document.getElementById('dzKE').textContent=f(k.escalados);
-    document.getElementById('dzKCp').textContent='Etapas 5 a 9 · '+pc(k.calificados,k.total)+' del total';
-    document.getElementById('dzKEp').textContent=pc(k.escalados,k.total)+' del total';
-    const by=Object.fromEntries(D.pipelines.map(r=>[r.pipeline,r]));
-    const foco=FOCO.map(p=>by[p]||vacio(p));
-    document.getElementById('dzFoco').innerHTML=head()+'<tbody>'+foco.map(r=>row(r)).join('')+row(sum(foco,'Total 6 zonas'),'tot')+'</tbody>';
-    dzRenderTabla();
-    charts.forEach(c=>c.destroy()); charts=[];
-    if(window.Chart){
-      charts.push(new Chart(document.getElementById('dzDiaChart'),{type:'bar',data:{labels:D.dia.map(d=>+d.dia.slice(8)),datasets:[{label:'Leads nuevos',data:D.dia.map(d=>d.leads),backgroundColor:'#E85B1D',borderRadius:3}]},options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{title:it=>D.dia[it[0].dataIndex].dia}}},scales:{x:{grid:{display:false}},y:{beginAtZero:true}}}}));
-      charts.push(new Chart(document.getElementById('dzEtapaChart'),{type:'bar',data:{labels:BK.map(b=>BKL[b]),datasets:[{label:'Leads',data:BK.map(b=>D.etapas[b]||0),backgroundColor:BK.map(b=>b==='esc'?'#B4B2A9':(['e5','e6','e7','e8','e9'].includes(b)?'#3B8A1E':'#E85B1D')),borderRadius:3}]},options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true},y:{grid:{display:false}}}}}));
-    }
-  }
-  function cargar(){
-    fetch('darwin/darwin.json?v='+Date.now(),{cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
-      .then(j=>{ D=j; document.getElementById('dzErr').hidden=true; render(); })
-      .catch(e=>{ const el=document.getElementById('dzErr'); el.hidden=false;
-        el.textContent='No se pudieron cargar los datos de Darwin ('+e.message+'). Esta página solo funciona publicada en la web (GitHub Pages), no abriendo el archivo directamente.';
-        document.getElementById('dzCorte').textContent=''; });
-  }
-  cargar();
-  setInterval(cargar, 15*60*1000);
 })();
 </script>
 </body>
