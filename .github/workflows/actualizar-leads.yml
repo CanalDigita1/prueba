@@ -1,0 +1,49 @@
+name: Actualizar leads DARWIN
+
+on:
+  schedule:
+    - cron: '15 12 * * *'   # todos los días 7:15 a. m. hora Lima
+  workflow_dispatch: {}      # botón "Run workflow" para actualizar a mano
+
+permissions:
+  contents: write
+
+concurrency:
+  group: actualizar-leads
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install openpyxl
+
+      - name: Descargar consulta de Metabase
+        env:
+          METABASE_URL: ${{ secrets.METABASE_URL }}
+          METABASE_CARD_ID: ${{ secrets.METABASE_CARD_ID }}
+          METABASE_API_KEY: ${{ secrets.METABASE_API_KEY }}
+          METABASE_USER: ${{ secrets.METABASE_USER }}
+          METABASE_PASSWORD: ${{ secrets.METABASE_PASSWORD }}
+        run: python3 scripts/descargar_metabase.py "$RUNNER_TEMP/metabase.csv"
+
+      - name: Actualizar index.html (sin nombres ni teléfonos)
+        env:
+          LEADS_SALT: ${{ secrets.LEADS_SALT }}
+        run: python3 scripts/actualizar_leads.py "$RUNNER_TEMP/metabase.csv" index.html
+
+      - name: Subir cambios
+        run: |
+          git config user.name "Actualización automática"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
+          FECHA=$(TZ=America/Lima date +%d/%m/%Y)
+          git commit -m "$FECHA (auto)"
+          git push
