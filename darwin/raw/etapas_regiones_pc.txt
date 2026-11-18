@@ -1,0 +1,48 @@
+Huanuco PC › Escalated|259
+Huanuco PC › 1. Saludo y captura de datos|91
+ICA PC › Escalated|43
+Cusco PC › Escalated|33
+Cajamarca PC › Escalated|20
+Huancayo PC › Escalated|20
+Chiclayo PC › Escalated|19
+Trujillo PC › Escalated|19
+Cusco PC › 4. Presentacion del plan|11
+Piura PC › Escalated|11
+Cusco PC › 5. Calificados|10
+Trujillo PC › 5. Calificados|10
+Jualiaca PC › Escalated|9
+Tacna PC › Escalated|9
+Arequipa 1 PC › Escalated|8
+Piura PC › 5. Calificados|8
+Cajamarca PC › 5. Calificados|7
+Huancayo PC › 5. Calificados|7
+ICA PC › 5. Calificados|6
+Piura PC › 4. Presentacion del plan|6
+Huancayo PC › 4. Presentacion del plan|5
+Huaraz PC › Escalated|5
+Pucallpa PC › Escalated|5
+Chiclayo PC › 5. Calificados|4
+Jualiaca PC › 5. Calificados|4
+Trujillo PC › 4. Presentacion del plan|4
+Arequipa 1 PC › 5. Calificados|3
+Arequipa 2 PC › Escalated|3
+Cajamarca PC › 4. Presentacion del plan|3
+Chimbote PC › 4. Presentacion del plan|3
+Huanuco PC › 5. Calificados|3
+Huaraz PC › 4. Presentacion del plan|3
+Huaraz PC › 5. Calificados|3
+ICA PC › 4. Presentacion del plan|3
+Piura PC › 1. Saludo y captura de datos|3
+Chiclayo PC › 4. Presentacion del plan|2
+Cusco PC › 3. Ticket del vehiculo|2
+Tacna PC › 5. Calificados|2
+Arequipa 1 PC › 1. Saludo y captura de datos|1
+Arequipa 1 PC › 4. Presentacion del plan|1
+Arequipa 2 PC › 3. Ticket del vehiculo|1
+Cajamarca PC › 1. Saludo y captura de datos|1
+Chimbote PC › 5. Calificados|1
+Chimbote PC › Escalated|1
+ICA PC › 6. Seguimiento|1
+Pucallpa PC › 2. Intencion de compra|1
+Pucallpa PC › 4. Presentacion del plan|1
+Trujillo PC › 6. Seguimiento|1

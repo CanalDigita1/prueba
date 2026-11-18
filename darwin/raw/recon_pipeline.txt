@@ -1,0 +1,51 @@
+Pucallpa|599
+Lima Sur 1|502
+Lima Centro|312
+Huanuco|274
+Huanuco PC|266
+Lima Norte 2|154
+Lima Norte 1|154
+Lima Norte 3|126
+Iquitos|122
+Lima Sur 2|113
+Arequipa 2|77
+Lima Sur 1 PC|73
+Lima Sur 2 PC|69
+Lima Norte 1 PC|66
+Lima Centro PC|62
+Lima Norte 3 PC|59
+Atención al cliente|58
+Lima Norte 2 PC|37
+Huancayo|21
+Ica|19
+Alese Norte|19
+Trujillo|18
+ICA PC|18
+Cusco|17
+Inbound Sofia|17
+Piura|16
+Orquestrador|15
+Cusco PC|14
+Arequipa 1|12
+Chiclayo|11
+Alese Sur|11
+Formulario Estandar|11
+Arequipa 1 PC|9
+Juliaca|8
+Tacna|8
+Tarapoto|8
+Norte Chico|8
+Cajamarca PC|8
+Piura PC|7
+Chimbote|6
+Chiclayo PC|4
+Huancayo PC|4
+Cajamarca|3
+Jualiaca PC|3
+Trujillo PC|3
+Huaraz PC|2
+Pucallpa PC|2
+Tacna PC|2
+Huaraz|1
+Arequipa 2 PC|1
+Chimbote PC|1
